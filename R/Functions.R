@@ -244,6 +244,14 @@ addcountries <- function(df){
 #' \dontrun{
 #' mapfunction(MyData)
 #' }
+#' @import lubridate
+#' @import leaflet
+#' @import DT
+#' @import maps
+#' @import maptools
+#' @import viridisLite
+#' @import highcharter
+#' @import  utils
 #' @export
 mapfunction <-function(df){
   MyData <- df

@@ -9,4 +9,4 @@ Depends: R(>= 3.4.2), lubridate, xts, dplyr, leaflet, DT, maps, maptools, viridi
 License: MIT
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 6.0.1.9000
+RoxygenNote: 6.0.1
