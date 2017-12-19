@@ -17,8 +17,3 @@ a dataframe
 mapfunction()
 This function maps the location of earthquake onto a leaflet map. This map function is an interactive map that the user can user and interect to see their data in a geospatial manner.
 }
-\examples{
-\dontrun{
-mapfunction(MyData)
-}
-}

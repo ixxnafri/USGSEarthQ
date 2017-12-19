@@ -20,7 +20,6 @@ weekfunction()
 This function subset the data to the number of week prior to current time inserted my the user input
 }
 \examples{
-\dontrun{
+MyData = importusgsdata(day) #importing dataframe
 weekfunction(2, MyData) #data from 2 weeks ago till current time.
-}
 }

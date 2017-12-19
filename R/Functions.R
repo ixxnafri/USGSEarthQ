@@ -20,12 +20,9 @@ timeconvert <- function(vector){
 #' This function imports live-feed data from USGS. The user have a choice to choose live-feed data for the past hour, day, week, month
 #' @param charac Takes an object called HOUR, DAY, WEEK, or MONTH.
 #' @param df User choose to export dataframe automatically to the global environment called MyData. Defaults to FALSE.
-#' @return a dataframe
+#' @return a dataframe class. Return a dataframe with with the selected HOUR,DAY,WEEK,or MONTH with parameters of time, lat, long, depth, mag, magType, place, locations and, DateTime.
 #' @examples
-#' \dontrun{
-#' importusgsdata(week, df = TRUE)
-#' importusdsdata(hour)
-#' }
+#' MyData = importusgsdata(hour, df = FALSE)
 #' @export
 importusgsdata <- function(charac, df = FALSE){
   character = deparse(substitute(charac))
@@ -64,9 +61,7 @@ importusgsdata <- function(charac, df = FALSE){
 #' @param df User choose to export dataframe automatically to the global environment called MyData. Defaults to FALSE.
 #' @return a dataframe
 #' @examples
-#' \dontrun{
-#' customusgslink("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.csv", TRUE)
-#' }
+#' MyData = customusgslink("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_hour.csv", TRUE)
 #' @export
 customusgslink<-function(URL, df = FALSE){
   MyData <<- read.table(URL, sep = ",", header = T)
@@ -84,10 +79,9 @@ customusgslink<-function(URL, df = FALSE){
 #' @param df takes a dataframe
 #' @return a dataframe
 #' @examples
-#' \dontrun{
+#' MyData = importusgsdata(day) #importing dataframe
 #' magnitude(2,5,MyData)
-#' magnitude(upbound = 3, MyData)
-#' }
+#' magnitude(upbound = 3, df = MyData)
 #' @export
 
 magnitude <- function(lowbound = NULL,upbound = NULL, df){ #lowbound is lowerbound upbound is upperbound
@@ -110,9 +104,8 @@ magnitude <- function(lowbound = NULL,upbound = NULL, df){ #lowbound is lowerbou
 #' @param df takes a dataframe
 #' @return a dataframe
 #' @examples
-#' \dontrun{
-#' earthquake(deep, MyData)
-#' }
+#' MyData = importusgsdata(day) #importing dataframe
+#' earthquakedepth(deep, MyData)
 #' @export
 earthquakedepth<-function(x, df){
   df1 <- df
@@ -143,9 +136,8 @@ earthquakedepth<-function(x, df){
 #' @param df takes a dataframe
 #' @return a dataframe
 #' @examples
-#' \dontrun{
+#' MyData = importusgsdata(day) #importing dataframe
 #' dayfunction(3, MyData) #data from 3days ago till current time.
-#' }
 #' @export
 dayfunction <-function(x, df){ # where x equals to days
   df1 <- df
@@ -161,9 +153,8 @@ dayfunction <-function(x, df){ # where x equals to days
 #' @param df takes a dataframe
 #' @return a dataframe
 #' @examples
-#' \dontrun{
+#' MyData = importusgsdata(day) #importing dataframe
 #' minutesfunction(300, MyData) #data from 300 minutes ago till current time.
-#' }
 #' @export
 minutesfunction <-function(x, df){
   df1 <- df
@@ -180,9 +171,8 @@ minutesfunction <-function(x, df){
 #' @param df takes a dataframe
 #' @return a dataframe
 #' @examples
-#' \dontrun{
+#' MyData = importusgsdata(day) #importing dataframe
 #' hourfunction(25, MyData) #data from 25 hours ago till current time.
-#' }
 #' @export
 hourfunction <-function(x, df){ # where x equals to days
   df1 <- df
@@ -198,9 +188,8 @@ hourfunction <-function(x, df){ # where x equals to days
 #' @param df takes a dataframe
 #' @return a dataframe
 #' @examples
-#' \dontrun{
+#' MyData = importusgsdata(day) #importing dataframe
 #' weekfunction(2, MyData) #data from 2 weeks ago till current time.
-#' }
 #' @export
 weekfunction <-function(x, df){ # where x equals to days
   df1 <- df
@@ -216,9 +205,8 @@ weekfunction <-function(x, df){ # where x equals to days
 #' @param df takes a dataframe
 #' @return a dataframe
 #' @examples
-#' \dontrun{
+#' MyData = importusgsdata(day) #importing dataframe
 #' addcountries(MyData)
-#' }
 #' @export
 addcountries <- function(df){
   world <- map('world', fill=TRUE, col="transparent", plot=FALSE)
@@ -242,8 +230,8 @@ addcountries <- function(df){
 #' @return a dataframe
 #' @examples
 #' \dontrun{
+#' MyData = importusgsdata(day) #importing dataframe
 #' mapfunction(MyData)
-#' }
 #' @import lubridate
 #' @import leaflet
 #' @import DT

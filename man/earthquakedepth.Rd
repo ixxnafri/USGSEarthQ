@@ -20,7 +20,6 @@ earthquakedepth()
 This function returns a dataframe in corellation with the earthquake depth input by user.
 }
 \examples{
-\dontrun{
-earthquake(deep, MyData)
-}
+MyData = importusgsdata(day) #importing dataframe
+earthquakedepth(deep, MyData)
 }

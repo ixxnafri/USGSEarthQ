@@ -20,7 +20,6 @@ dayfunction()
 This function subset the data to the number of days prior to current time inserted my the user input
 }
 \examples{
-\dontrun{
+MyData = importusgsdata(day) #importing dataframe
 dayfunction(3, MyData) #data from 3days ago till current time.
-}
 }

@@ -13,15 +13,12 @@ importusgsdata(charac, df = FALSE)
 \item{df}{User choose to export dataframe automatically to the global environment called MyData. Defaults to FALSE.}
 }
 \value{
-a dataframe
+a dataframe class. Return a dataframe with with the selected HOUR,DAY,WEEK,or MONTH with parameters of time, lat, long, depth, mag, magType, place, locations and, DateTime.
 }
 \description{
 importusgsdata()
 This function imports live-feed data from USGS. The user have a choice to choose live-feed data for the past hour, day, week, month
 }
 \examples{
-\dontrun{
-importusgsdata(week, df = TRUE)
-importusdsdata(hour)
-}
+MyData = importusgsdata(hour, df = FALSE)
 }

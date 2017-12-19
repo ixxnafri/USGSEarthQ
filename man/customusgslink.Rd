@@ -18,7 +18,5 @@ a dataframe
 This function imports custom URL link obtained from USGS.
 }
 \examples{
-\dontrun{
-customusgslink("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.csv", TRUE)
-}
+MyData = customusgslink("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_hour.csv", TRUE)
 }

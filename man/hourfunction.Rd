@@ -20,7 +20,6 @@ hourfunction()
 This function subset the data to the number of hours prior to current time inserted my the user input
 }
 \examples{
-\dontrun{
+MyData = importusgsdata(day) #importing dataframe
 hourfunction(25, MyData) #data from 25 hours ago till current time.
-}
 }

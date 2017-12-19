@@ -20,7 +20,6 @@ minutesfunction()
 This function subset the data to the number of minutes prior to current time inserted my the user input
 }
 \examples{
-\dontrun{
+MyData = importusgsdata(day) #importing dataframe
 minutesfunction(300, MyData) #data from 300 minutes ago till current time.
-}
 }

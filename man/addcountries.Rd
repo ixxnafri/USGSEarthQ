@@ -18,7 +18,6 @@ addcountries()
 This function add a "countries" column in the dataframe by deducing the location of earthquake using long and lat.
 }
 \examples{
-\dontrun{
+MyData = importusgsdata(day) #importing dataframe
 addcountries(MyData)
-}
 }

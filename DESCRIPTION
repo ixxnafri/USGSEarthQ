@@ -1,11 +1,11 @@
 Package: USGSEarthQ
 Type: Package
 Title: USGS Data Wrangler
-Version: 1.0.1
+Version: 1.2.0
 Author: Izz Fauzi <mohdfau2@illinois.edu>
 Maintainer: Izz Fauzi <mohdfau2@illinois.edu>
 Description: This package includes functions to help user play with the data obtained from USGS. Functions in this package includes import live feed data of earthquakes, import custom data, timestamp for date-time, observe depth of earthquakes, observe magnitude of earthquakes, location of earthquakes, and mapping of earthquakes using leaflet.
-Depends: R(>= 3.4.2), lubridate, leaflet, DT, maps, maptools, viridisLite, highcharter, treemap, utils
+Depends: R(>= 3.4.2), lubridate, leaflet, DT, maps, maptools, viridisLite, highcharter, utils
 License: MIT
 Encoding: UTF-8
 LazyData: true

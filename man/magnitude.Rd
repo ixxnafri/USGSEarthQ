@@ -20,8 +20,7 @@ a dataframe
 This function takes a dataframe and also the lowerbound and upperbound from user input and produce a dataframe for magnitude ranges between lowerbound and upperbound.
 }
 \examples{
-\dontrun{
+MyData = importusgsdata(day) #importing dataframe
 magnitude(2,5,MyData)
-magnitude(upbound = 3, MyData)
-}
+magnitude(upbound = 3, df = MyData)
 }
