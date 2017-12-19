@@ -1,3 +1,12 @@
+#' timeconvert()
+#'
+#' This function is a helper function to strip the string format of the Date-Time format and convert it to POSIXlt format
+#' @param vector takes a string
+#' @return returns a POSIXlt date-time class.
+#' @examples
+#' \dontrun{
+#' as.POSIXlt(sapply(MyData$time,FUN=timeconvert))
+#' }
 timeconvert <- function(vector){
   first_split <- strsplit(paste(vector),"T")
   second_split <- strsplit(first_split[[1]][2],"Z")
@@ -5,7 +14,17 @@ timeconvert <- function(vector){
   paste(as.POSIXlt(convo,formate="%Y-%m-%d%H:%M:%OS3", tz = "GMT"))
 }
 
-
+#' importusgsdata()
+#'
+#' This function imports live-feed data from USGS. The User have a choice to choose live-feed data for the past hour, day, week, month
+#' @param charac Takes an object called HOUR, DAY, WEEK, or MONTH.
+#' @param df User choose to export dataframe automatically to the global environment called MyData. Defaults to FALSE.
+#' @return a dataframe
+#' @examples
+#' \dontrun{
+#' importusgsdata(week, df = TRUE)
+#' importusdsdata(hour)
+#' }
 importusgsdata <- function(charac, df = FALSE){
   character = deparse(substitute(charac))
   if(toupper(character) == "HOUR"){
@@ -36,18 +55,38 @@ importusgsdata <- function(charac, df = FALSE){
   MyData
 }
 
-
-
+#' customusgslink()
+#'
+#' This function imports custom URL link obtained from USGS.
+#' @param URL takes a URL from USGS website
+#' @param df User choose to export dataframe automatically to the global environment called MyData. Defaults to FALSE.
+#' @return a dataframe
+#' @examples
+#' \dontrun{
+#' customusgslink("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.csv", TRUE)
+#' }
 customusgslink<-function(URL, df = FALSE){
   MyData <<- read.table(URL, sep = ",", header = T)
   MyData[is.na(MyData)] <- 0 #delete NA values
-  MyData$DateTime <<- as.POSIXlt(sapply(MyData$time,FUN=timeconvert))
   MyData$DateTime <- as.POSIXlt(sapply(MyData$time,FUN=timeconvert))
   if(df == TRUE) {MyData <<- MyData}
   MyData
 }
 
-Magnitude <- function(lowbound = NULL,upbound = NULL, df){ #lowbound is lowerbound upbound is upperbound
+#' magnitude()
+#'
+#' This function takes a dataframe and also the lowerbound and upperbound from user input and produce a dataframe for magnitude ranges between lowerbound and upperbound.
+#' @param lowbound takes a float or int. Defaults to NULL
+#' @param upbound takes a float or int. Defaults to NULL
+#' @param df takes a dataframe
+#' @return a dataframe
+#' @examples
+#' \dontrun{
+#' magnitude(2,5,MyData)
+#' magnitude(upbound = 3, MyData)
+#' }
+
+magnitude <- function(lowbound = NULL,upbound = NULL, df){ #lowbound is lowerbound upbound is upperbound
   df1 <- df
   if(is.null(upbound) & is.null(lowbound)){
     print("ERROR: At least one parameter is needed for this function to work")
@@ -61,7 +100,15 @@ Magnitude <- function(lowbound = NULL,upbound = NULL, df){ #lowbound is lowerbou
   return(df1)
 }
 
-
+#' earthquakedepth()
+#' This function returns a dataframe in corellation with the earthquake depth input by user.
+#' @param x takes object input. Only accept LOW, INTERMEDIATE, and DEEP as answer
+#' @param df takes a dataframe
+#' @return a dataframe
+#' @examples
+#' \dontrun{
+#' earthquake(deep, MyData)
+#' }
 earthquakedepth<-function(x, df){
   df1 <- df
   x = deparse(substitute(x))
@@ -81,11 +128,19 @@ earthquakedepth<-function(x, df){
     return(df)
   }
   else{
-    print("ERROR: WRONG INPUT")
+    print("ERROR: WRONG INPUT. ONLY CAN TAKE LOW, INTERMEDATE, OR DEEP")
   }
 }
 
-
+#' dayfunction()
+#' This function subset the data to the number of days prior to current time inserted my the user input
+#' @param x takes an integer. Number of days prior to current time
+#' @param df takes a dataframe
+#' @return a dataframe
+#' @examples
+#' \dontrun{
+#' dayfunction(3, MyData) #data from 3days ago till current time.
+#' }
 dayfunction <-function(x, df){ # where x equals to days
   df1 <- df
   df1$diff <-c(as.POSIXlt(Sys.time()) - (df1$DateTime - 21600)) #time right now - Time of Eq
@@ -94,7 +149,16 @@ dayfunction <-function(x, df){ # where x equals to days
   return(df)
 }
 
-minutesfunction <-function(x, df){ # where x equals to days
+#' minutesfunction()
+#' This function subset the data to the number of minutes prior to current time inserted my the user input
+#' @param x takes an integer. Number of minutes from current time
+#' @param df takes a dataframe
+#' @return a dataframe
+#' @examples
+#' \dontrun{
+#' minutesfunction(300, MyData) #data from 300 minutes ago till current time.
+#' }
+minutesfunction <-function(x, df){
   df1 <- df
   df1$diff <-c(as.POSIXlt(Sys.time()) - (df1$DateTime - 21600)) #time right now - Time of Eq
   df1 <- df1[df1$diff < (x),]
@@ -102,6 +166,16 @@ minutesfunction <-function(x, df){ # where x equals to days
   return(df)
 }
 
+
+#' hourfunction()
+#' This function subset the data to the number of hours prior to current time inserted my the user input
+#' @param x takes an integer. Number of hours from current time
+#' @param df takes a dataframe
+#' @return a dataframe
+#' @examples
+#' \dontrun{
+#' hourfunction(25, MyData) #data from 25 hours ago till current time.
+#' }
 hourfunction <-function(x, df){ # where x equals to days
   df1 <- df
   df1$diff <-c(as.POSIXlt(Sys.time()) - (df1$DateTime - 21600)) #time right now - Time of Eq
@@ -110,7 +184,15 @@ hourfunction <-function(x, df){ # where x equals to days
   return(df)
 }
 
-
+#' weekfunction()
+#' This function subset the data to the number of week prior to current time inserted my the user input
+#' @param x takes an integer. Number of wek from current time
+#' @param df takes a dataframe
+#' @return a dataframe
+#' @examples
+#' \dontrun{
+#' weekfunction(2, MyData) #data from 2 weeks ago till current time.
+#' }
 weekfunction <-function(x, df){ # where x equals to days
   df1 <- df
   df1$diff <-c(as.POSIXlt(Sys.time()) - (df1$DateTime - 21600)) #time right now - Time of Eq
@@ -120,7 +202,14 @@ weekfunction <-function(x, df){ # where x equals to days
 }
 
 
-
+#' addcountries()
+#' This function add a "countries" column in the dataframe by deducing the location of earthquake using long and lat.
+#' @param df takes a dataframe
+#' @return a dataframe
+#' @examples
+#' \dontrun{
+#' addcountries(MyData)
+#' }
 addcountries <- function(df){
   world <- map('world', fill=TRUE, col="transparent", plot=FALSE)
   IDs <- sapply(strsplit(world$names, ":"), function(x) x[1])
@@ -136,6 +225,15 @@ addcountries <- function(df){
 
 }
 
+
+#' mapfunction()
+#' This function maps the location of earthquake onto a leaflet map. This map function is an interactive map that the user can user and interect to see their data in a geospatial manner.
+#' @param df takes a dataframe
+#' @return a dataframe
+#' @examples
+#' \dontrun{
+#' mapfunction(MyData)
+#' }
 mapfunction <-function(df){
   MyData <- df
   MyData %>%
