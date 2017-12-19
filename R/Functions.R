@@ -17,7 +17,7 @@ timeconvert <- function(vector){
 
 #' importusgsdata()
 #
-#' This function imports live-feed data from USGS. The User have a choice to choose live-feed data for the past hour, day, week, month
+#' This function imports live-feed data from USGS. The user have a choice to choose live-feed data for the past hour, day, week, month
 #' @param charac Takes an object called HOUR, DAY, WEEK, or MONTH.
 #' @param df User choose to export dataframe automatically to the global environment called MyData. Defaults to FALSE.
 #' @return a dataframe
@@ -251,7 +251,7 @@ addcountries <- function(df){
 #' @import maptools
 #' @import viridisLite
 #' @import highcharter
-#' @import  utils
+#' @import utils
 #' @export
 mapfunction <-function(df){
   MyData <- df

@@ -3,7 +3,7 @@
 \name{importusgsdata}
 \alias{importusgsdata}
 \title{importusgsdata()
-This function imports live-feed data from USGS. The User have a choice to choose live-feed data for the past hour, day, week, month}
+This function imports live-feed data from USGS. The user have a choice to choose live-feed data for the past hour, day, week, month}
 \usage{
 importusgsdata(charac, df = FALSE)
 }
@@ -17,7 +17,7 @@ a dataframe
 }
 \description{
 importusgsdata()
-This function imports live-feed data from USGS. The User have a choice to choose live-feed data for the past hour, day, week, month
+This function imports live-feed data from USGS. The user have a choice to choose live-feed data for the past hour, day, week, month
 }
 \examples{
 \dontrun{
