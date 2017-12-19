@@ -7,6 +7,7 @@
 #' \dontrun{
 #' as.POSIXlt(sapply(MyData$time,FUN=timeconvert))
 #' }
+#' @export
 timeconvert <- function(vector){
   first_split <- strsplit(paste(vector),"T")
   second_split <- strsplit(first_split[[1]][2],"Z")
@@ -15,7 +16,7 @@ timeconvert <- function(vector){
 }
 
 #' importusgsdata()
-#'
+#
 #' This function imports live-feed data from USGS. The User have a choice to choose live-feed data for the past hour, day, week, month
 #' @param charac Takes an object called HOUR, DAY, WEEK, or MONTH.
 #' @param df User choose to export dataframe automatically to the global environment called MyData. Defaults to FALSE.
@@ -25,6 +26,7 @@ timeconvert <- function(vector){
 #' importusgsdata(week, df = TRUE)
 #' importusdsdata(hour)
 #' }
+#' @export
 importusgsdata <- function(charac, df = FALSE){
   character = deparse(substitute(charac))
   if(toupper(character) == "HOUR"){
@@ -65,6 +67,7 @@ importusgsdata <- function(charac, df = FALSE){
 #' \dontrun{
 #' customusgslink("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.csv", TRUE)
 #' }
+#' @export
 customusgslink<-function(URL, df = FALSE){
   MyData <<- read.table(URL, sep = ",", header = T)
   MyData[is.na(MyData)] <- 0 #delete NA values
@@ -85,6 +88,7 @@ customusgslink<-function(URL, df = FALSE){
 #' magnitude(2,5,MyData)
 #' magnitude(upbound = 3, MyData)
 #' }
+#' @export
 
 magnitude <- function(lowbound = NULL,upbound = NULL, df){ #lowbound is lowerbound upbound is upperbound
   df1 <- df
@@ -109,6 +113,7 @@ magnitude <- function(lowbound = NULL,upbound = NULL, df){ #lowbound is lowerbou
 #' \dontrun{
 #' earthquake(deep, MyData)
 #' }
+#' @export
 earthquakedepth<-function(x, df){
   df1 <- df
   x = deparse(substitute(x))
@@ -141,6 +146,7 @@ earthquakedepth<-function(x, df){
 #' \dontrun{
 #' dayfunction(3, MyData) #data from 3days ago till current time.
 #' }
+#' @export
 dayfunction <-function(x, df){ # where x equals to days
   df1 <- df
   df1$diff <-c(as.POSIXlt(Sys.time()) - (df1$DateTime - 21600)) #time right now - Time of Eq
@@ -158,6 +164,7 @@ dayfunction <-function(x, df){ # where x equals to days
 #' \dontrun{
 #' minutesfunction(300, MyData) #data from 300 minutes ago till current time.
 #' }
+#' @export
 minutesfunction <-function(x, df){
   df1 <- df
   df1$diff <-c(as.POSIXlt(Sys.time()) - (df1$DateTime - 21600)) #time right now - Time of Eq
@@ -176,6 +183,7 @@ minutesfunction <-function(x, df){
 #' \dontrun{
 #' hourfunction(25, MyData) #data from 25 hours ago till current time.
 #' }
+#' @export
 hourfunction <-function(x, df){ # where x equals to days
   df1 <- df
   df1$diff <-c(as.POSIXlt(Sys.time()) - (df1$DateTime - 21600)) #time right now - Time of Eq
@@ -193,6 +201,7 @@ hourfunction <-function(x, df){ # where x equals to days
 #' \dontrun{
 #' weekfunction(2, MyData) #data from 2 weeks ago till current time.
 #' }
+#' @export
 weekfunction <-function(x, df){ # where x equals to days
   df1 <- df
   df1$diff <-c(as.POSIXlt(Sys.time()) - (df1$DateTime - 21600)) #time right now - Time of Eq
@@ -210,6 +219,7 @@ weekfunction <-function(x, df){ # where x equals to days
 #' \dontrun{
 #' addcountries(MyData)
 #' }
+#' @export
 addcountries <- function(df){
   world <- map('world', fill=TRUE, col="transparent", plot=FALSE)
   IDs <- sapply(strsplit(world$names, ":"), function(x) x[1])
@@ -234,6 +244,7 @@ addcountries <- function(df){
 #' \dontrun{
 #' mapfunction(MyData)
 #' }
+#' @export
 mapfunction <-function(df){
   MyData <- df
   MyData %>%
