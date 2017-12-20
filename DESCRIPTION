@@ -5,7 +5,7 @@ Version: 1.2.1
 Author: Izz Fauzi <mohdfau2@illinois.edu>
 Maintainer: Izz Fauzi <mohdfau2@illinois.edu>
 Description: This package includes functions to help user play with the data obtained from USGS. It includes easy to use function with ease to user in mind. Functions in this package includes import live feed data of earthquakes, import custom data, timestamp for date-time, observe depth of earthquakes, observe magnitude of earthquakes, location of earthquakes, and mapping of earthquakes using leaflet.
-Depends: R(>= 3.4.2), lubridate, leaflet, DT, maps, maptools, viridisLite, highcharter, utils
+Depends: R(>= 3.4.2), leaflet, DT, maps, maptools, viridisLite, highcharter, utils
 License: MIT
 Encoding: UTF-8
 LazyData: true
