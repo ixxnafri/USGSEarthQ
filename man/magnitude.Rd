@@ -14,13 +14,13 @@ magnitude(lowbound = NULL, upbound = NULL, df)
 \item{df}{takes a dataframe}
 }
 \value{
-a dataframe
+a dataframe. Reshape the dataframe by eliminating data that is out of bound from the user input.
 }
 \description{
 This function takes a dataframe and also the lowerbound and upperbound from user input and produce a dataframe for magnitude ranges between lowerbound and upperbound.
 }
 \examples{
 MyData = importusgsdata(day) #importing dataframe
-magnitude(2,5,MyData)
-magnitude(upbound = 3, df = MyData)
+magnitude(2,5,MyData) # finding earthquake of magnitude 2 - 5.
+magnitude(upbound = 3, df = MyData) #finding earthquake of magnitude < 3
 }

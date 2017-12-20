@@ -8,12 +8,12 @@ This function returns a dataframe in corellation with the earthquake depth input
 earthquakedepth(x, df)
 }
 \arguments{
-\item{x}{takes object input. Only accept LOW, INTERMEDIATE, and DEEP as answer}
+\item{x}{takes object input. Only accept LOW, INTERMEDIATE, and DEEP or (1,2, & 3) as answer. Not case sensetive and shortform also accepted.}
 
 \item{df}{takes a dataframe}
 }
 \value{
-a dataframe
+a dataframe class. Return a reshape dataframe that reflects to the user input choices (DEEP, LOW, OR INTER) in depth
 }
 \description{
 earthquakedepth()

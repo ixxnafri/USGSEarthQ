@@ -11,9 +11,13 @@ mapfunction(df)
 \item{df}{takes a dataframe}
 }
 \value{
-a dataframe
+an interactive leaflet map. This map is imported from leaflet. The data from the dataframe will be paste on the interactive leaflet map. It will also show depth, Date time and magnitude of the earthquake.
 }
 \description{
 mapfunction()
 This function maps the location of earthquake onto a leaflet map. This map function is an interactive map that the user can user and interect to see their data in a geospatial manner.
+}
+\examples{
+MyData = importusgsdata(day) #importing dataframe
+mapfunction(MyData)
 }

@@ -13,7 +13,7 @@ weekfunction(x, df)
 \item{df}{takes a dataframe}
 }
 \value{
-a dataframe
+a dataframe. Reshape the dataframe reflects in the number of week set by the user from current time.
 }
 \description{
 weekfunction()

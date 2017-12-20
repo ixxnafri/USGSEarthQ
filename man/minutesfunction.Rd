@@ -13,7 +13,7 @@ minutesfunction(x, df)
 \item{df}{takes a dataframe}
 }
 \value{
-a dataframe
+a dataframe class. Reshape the dataframe reflects in the number of minutes set by the user from current time.
 }
 \description{
 minutesfunction()

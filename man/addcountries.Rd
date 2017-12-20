@@ -11,7 +11,7 @@ addcountries(df)
 \item{df}{takes a dataframe}
 }
 \value{
-a dataframe
+a data frame class. Add another column in dataframe called country which shows the countries the earthquake comes from.
 }
 \description{
 addcountries()

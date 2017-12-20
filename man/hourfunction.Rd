@@ -13,7 +13,7 @@ hourfunction(x, df)
 \item{df}{takes a dataframe}
 }
 \value{
-a dataframe
+a dataframe class. Reshape the dataframe reflects in the number of hour set by the user from current time.
 }
 \description{
 hourfunction()

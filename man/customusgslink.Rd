@@ -12,10 +12,10 @@ customusgslink(URL, df = FALSE)
 \item{df}{User choose to export dataframe automatically to the global environment called MyData. Defaults to FALSE.}
 }
 \value{
-a dataframe
+a dataframe class. Return a dataframe from the USGS link provided by the user, with parameters of time, lat, long, depth, mag, magType, place, locations and, DateTime.
 }
 \description{
-This function imports custom URL link obtained from USGS.
+This function imports custom URL link obtained from USGS. Input is in CSV format.
 }
 \examples{
 MyData = customusgslink("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_hour.csv", TRUE)
